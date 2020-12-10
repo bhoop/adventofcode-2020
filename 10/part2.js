@@ -27,10 +27,8 @@ for (let n of numbers) {
 // so 8 is our final answer
 let counts = new Map();
 counts.set(numbers[numbers.length - 1], 1);
-console.log(counts);
 for (let i = numbers.length - 2; i >= 0; i--) {
 	let a = numbers[i];
-	console.log(a);
 	counts.set(
 		a,
 		possibilities.get(a).reduce((sum, a2) => sum + counts.get(a2), 0)
