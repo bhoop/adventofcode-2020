@@ -26,7 +26,9 @@ for (let n of numbers) {
 // - 1 can have three adapters plugged into it (2, 3, and 4), and a total combination of 5+2+1 = 8
 // so 8 is our final answer
 let counts = new Map();
+// manually set the count for the biggest adapter to '1' so that the next-largest adapter has something to add
 counts.set(numbers[numbers.length - 1], 1);
+// walk backwards down the list (largest -> smallest), cumulatively adding up the number of possible combinations
 for (let i = numbers.length - 2; i >= 0; i--) {
 	let a = numbers[i];
 	counts.set(
@@ -34,4 +36,6 @@ for (let i = numbers.length - 2; i >= 0; i--) {
 		possibilities.get(a).reduce((sum, a2) => sum + counts.get(a2), 0)
 	);
 }
-console.log(counts);
+
+// the count for 0 is the total possible combinations of adapaters that can be used
+console.log(`There are ${counts.get(0)} possible combinations of adapters.`);
